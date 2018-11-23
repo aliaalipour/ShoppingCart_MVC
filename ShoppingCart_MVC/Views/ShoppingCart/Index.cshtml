@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ShoppingCart_MVC.Models.ShopCartViewModel>
+@{
+    ViewBag.Title = "Index";
+    int row = 1;
+}
+
+<h3 class="text-right">سبد خرید شما</h3>
+
+<table class="table table-bordered" dir="rtl">
+    <tr>
+        <th>#</th>
+        <th>تصویر</th>
+        <th>کالا</th>
+        <th>تعداد</th>
+        <th>قیمت</th>
+        <th>جمع</th>
+        <th>دستورات</th>
+    </tr>
+
+    @{
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>@row</td>
+                <td>
+                    <img src="/ImageProducts/@item.ImageName" style="max-width:120px" alt="Alternate Text" />
+                </td>
+                <td>
+                    @item.Title
+                </td>
+                <td>@item.Count</td>
+                <td>@item.Price</td>
+                <td>@item.Sum</td>
+                <td>
+                    <a class="btn btn-danger" href="@Url.Action("RemoveFromCart","ShoppingCart",new { id=item.ProductID})">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                </td>
+            </tr>
+            row++;
+        }
+    }
+    <tr>
+        <td colspan="3" class="text-left">
+            <span>جمع تعداد: </span>
+        </td>
+        <td>
+            @Model.Sum(p => p.Count)
+        </td>
+        <td>
+            <span>جمع کل: </span>
+        </td>
+        <td colspan="2" class="text-success">
+            @Model.Sum(p => p.Sum).ToString("#,0 تومان")
+        </td>
+
+    </tr>
+</table>

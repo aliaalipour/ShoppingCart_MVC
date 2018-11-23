@@ -1,0 +1,18 @@
+﻿@using ShoppingCart_MVC.Models;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div class="row">
+    @foreach (Product item in Model)
+    {
+        <div class="col-md-3 col-xs-6 text-center">
+            <img src="/ImageProducts/@item.ImageName" style="height:200px" class="img-responsive" alt="Alternate Text" />
+            <h3>@item.Title</h3>
+            <p class="text-center text-success">@item.Price.ToString("#,0") تومان</p>
+            <p><a class="btn btn-success btn-block" onclick="AddToCart(@item.ProductID)">خرید</a></p>
+        </div>
+    }
+
+</div>
