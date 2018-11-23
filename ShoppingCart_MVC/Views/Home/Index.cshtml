@@ -1,11 +1,11 @@
-﻿@using ShoppingCart_MVC.Models;
+﻿
 @{
     ViewBag.Title = "Home Page";
 }
 
 
 <div class="row">
-    @foreach (Product item in Model)
+    @foreach (var item in Model)
     {
         <div class="col-md-3 col-xs-6 text-center">
             <img src="/ImageProducts/@item.ImageName" style="height:200px" class="img-responsive" alt="Alternate Text" />

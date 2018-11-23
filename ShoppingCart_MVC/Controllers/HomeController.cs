@@ -15,8 +15,7 @@ namespace ShoppingCart_MVC.Controllers
 
             return View(Products);
         }
-
-
+        
         //اگر محصولات در پایگاه داده ما وجود نداشت این متد اجرا میشه
         public List<Product> CreateDatabase()
         {
