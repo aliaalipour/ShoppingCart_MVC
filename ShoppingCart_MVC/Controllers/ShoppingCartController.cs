@@ -40,6 +40,8 @@ namespace ShoppingCart_MVC.Controllers
 
             return View(list);
         }
+
+
         //تعداد اقلام موجود در سبد خرید
         public int AddToCart(int id)
         {
@@ -48,7 +50,7 @@ namespace ShoppingCart_MVC.Controllers
             //اگر از قبل خرید داشته کارت رو پر کن
             if (Session["ShopCart"] != null)
             {
-                cart = Session["ShopCart"] as List<ShopCartItem>;
+                cart = (List<ShopCartItem>)Session["ShopCart"];
             }
 
             //بیش از یک بار روی محصول کلیک کرده
@@ -89,7 +91,6 @@ namespace ShoppingCart_MVC.Controllers
 
             return RedirectToAction("Index");
         }
-
 
         public int ShopCountCart()
         {
